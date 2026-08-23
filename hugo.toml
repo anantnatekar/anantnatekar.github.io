@@ -1,0 +1,25 @@
+baseURL = "https://anantnatekar.github.io/"
+title = "Anant Natekar"
+languageCode = "en"
+theme = "hugo-coder"
+defaultContentLanguage = "en"
+
+[params]
+    author = "Anant Natekar"
+    description = "Personal Portfolio"
+    keywords = "developer, portfolio, personal"
+    info = "Data & AI focussed Full Stack Engineer & Ideas/Thought Contributor"
+    avatarurl = "images/avatar.jpg" # Place an image file inside your /static/images/ folder later
+
+    # Match the minimalist vinny.dev color mode choices
+    colorScheme = "auto" 
+
+[[menu.main]]
+    name = "About"
+    weight = 1
+    url = "about/"
+
+[[menu.main]]
+    name = "Projects"
+    weight = 2
+    url = "projects/"

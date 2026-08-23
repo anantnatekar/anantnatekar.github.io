@@ -6,20 +6,34 @@ defaultContentLanguage = "en"
 
 [params]
     author = "Anant Natekar"
-    description = "Personal Portfolio"
-    keywords = "developer, portfolio, personal"
-    info = "Data & AI focussed Full Stack Engineer & Ideas/Thought Contributor"
-    avatarurl = "images/avatar.jpg" # Place an image file inside your /static/images/ folder later
+    description = "Engineering leadership, platform strategy, and software design."
+    info = "Software Engineer & Builder"
+    
+    # Force the theme into an automatic clean light/dark mode
+    colorScheme = "auto"
+    customCSS = ["css/custom.css"]
+    
+    # Hide the profile picture avatar to match the extreme text minimalism of vinny.dev
+    hideAvatar = true
 
-    # Match the minimalist vinny.dev color mode choices
-    colorScheme = "auto" 
+    # Custom text footer parameters
+    footerLines = [
+        "Hand-written from my terminal.",
+        "Built with Hugo. Hosted on GitHub Pages."
+    ]
 
+# Setup the precise // explore structure of vinny.dev
 [[menu.main]]
-    name = "About"
+    name = "// writing"
     weight = 1
-    url = "about/"
+    url = "posts/"
 
 [[menu.main]]
-    name = "Projects"
+    name = "// apps"
     weight = 2
-    url = "projects/"
+    url = "apps/"
+
+[[menu.main]]
+    name = "// about"
+    weight = 3
+    url = "about/"

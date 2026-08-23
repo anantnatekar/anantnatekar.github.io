@@ -1,0 +1,47 @@
+/* Import Vercel's Geist & Geist Mono fonts directly */
+@import url('https://jsdelivr.net');
+@import url('https://jsdelivr.net');
+
+:root {
+    --font-family: 'Geist Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'Geist Mono', monospace;
+}
+
+body {
+    font-family: var(--font-family) !important;
+    letter-spacing: -0.02em;
+    line-height: 1.65;
+}
+
+/* Style the navigation links to look like technical code blocks */
+.navigation-list .navigation-item a {
+    font-family: var(--font-mono) !important;
+    font-size: 0.9rem;
+    color: #666 !important;
+    transition: color 0.2s ease;
+}
+
+.navigation-list .navigation-item a:hover {
+    color: #111 !important;
+}
+
+/* Dark mode specific color matching */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #0a0a0a !important;
+        color: #ededed !important;
+    }
+    .navigation-list .navigation-item a {
+        color: #888 !important;
+    }
+    .navigation-list .navigation-item a:hover {
+        color: #fff !important;
+    }
+}
+
+/* Format content lists with minimalist dividers */
+.posts-list .post-item {
+    border-bottom: 1px dashed #333;
+    padding: 1rem 0;
+}
+

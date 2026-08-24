@@ -23,7 +23,7 @@ defaultContentLanguage = "en"
         "Built with Hugo. Hosted on GitHub Pages."
     ]
 
-# Setup the precise // explore structure of vinny.dev
+# Setup the precise
 [[menu.main]]
     name = "LinkedIn"
     icon = "fa-brands fa-linkedin"
@@ -33,9 +33,9 @@ defaultContentLanguage = "en"
 [[menu.main]]
     name = "Apps"
     weight = 2
-    url = "portfolio-production-a9a0.up.railway.app""
+    url = "portfolio-production-a9a0.up.railway.app"
 
 [[menu.main]]
-    name = "// about"
+    name = "About"
     weight = 3
     url = "about/"

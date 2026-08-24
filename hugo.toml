@@ -12,12 +12,8 @@ defaultContentLanguage = "en"
     # Force the theme into an automatic clean light/dark mode
     colorScheme = "auto"
     customCSS = ["css/custom.css"]
-    
-    # Hide the profile picture avatar to match the extreme text minimalism of vinny.dev
     hideAvatar = false
     avatarurl = "images/avatar.jpg"
-
-    # Custom text footer parameters
     footerLines = [
         "Hand-written from my terminal.",
         "Built with Hugo. Hosted on GitHub Pages."

@@ -28,12 +28,20 @@
   }
 }
 
+/* Bumps the whole site's base type size up from the theme's default 1.8em */
 body {
   font-family: var(--font-sans) !important;
+  font-size: 2.05em;
   letter-spacing: -0.02em;
   line-height: 1.65;
   background-color: var(--bg) !important;
   color: var(--fg) !important;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    font-size: 1.75em;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -53,12 +61,13 @@ body {
 .navigation-title {
   font-family: var(--font-mono) !important;
   font-weight: 600 !important;
+  font-size: 1.05rem;
   letter-spacing: -0.01em;
 }
 
 .navigation-list .navigation-item a {
   font-family: var(--font-mono) !important;
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--fg-muted) !important;
   transition: color 0.2s ease;
   text-decoration: none !important;
@@ -73,25 +82,67 @@ body {
    ========================================================================== */
 .eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   letter-spacing: 0.02em;
   color: var(--fg-subtle);
-  margin: 5rem auto 1rem;
+  margin: 5rem auto 1.2rem;
   text-transform: lowercase;
+  text-align: center;
 }
 
 /* ==========================================================================
-   Hero
+   Hero — photo on the left, name/tagline centered alongside it
    ========================================================================== */
-.hero {
+.hero-split {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
   padding-top: 1rem;
   padding-bottom: 2rem;
+}
+
+.hero-photo {
+  flex: 0 0 auto;
+  width: 15rem;
+  text-align: center;
+}
+
+.hero-photo .avatar {
+  margin: 0;
+}
+
+.hero-photo .avatar img {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+}
+
+.photo-caption {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--fg-subtle);
+  line-height: 1.6;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+.photo-caption p {
+  margin: 0 0 0.6rem 0;
+}
+
+.hero-content {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.hero-content .eyebrow {
+  margin-top: 0;
 }
 
 .hero-name {
   font-family: var(--font-sans);
   font-weight: 800;
-  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  font-size: clamp(3rem, 6vw, 4.6rem);
   line-height: 1.05;
   letter-spacing: -0.03em;
   margin: 0 0 1.5rem 0;
@@ -103,25 +154,26 @@ body {
 }
 
 .hero-tagline {
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   line-height: 1.6;
   color: var(--fg-muted);
-  max-width: 46rem;
-  margin: 0 0 2.2rem 0;
+  max-width: 40rem;
+  margin: 0 auto 2.2rem auto;
 }
 
 .hero-cta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.7rem;
+  justify-content: center;
+  gap: 0.8rem;
   margin-bottom: 3rem;
 }
 
 .cta-btn {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 500;
-  padding: 0.6rem 1.1rem;
+  padding: 0.7rem 1.3rem;
   border: 1px solid var(--border-strong);
   border-radius: 999px;
   color: var(--fg) !important;
@@ -150,7 +202,8 @@ body {
 .hero-stats {
   display: flex;
   flex-wrap: wrap;
-  gap: 2.2rem;
+  justify-content: center;
+  gap: 2.4rem;
   padding-top: 2rem;
   border-top: 1px dashed var(--border);
 }
@@ -158,51 +211,31 @@ body {
 .stat {
   display: flex;
   flex-direction: column;
+  align-items: center;
   font-family: var(--font-mono);
 }
 
 .stat-value {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--fg);
 }
 
 .stat-label {
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   color: var(--fg-subtle);
   margin-top: 0.2rem;
 }
 
-/* ==========================================================================
-   Photo section
-   ========================================================================== */
-.photo-section {
-  display: flex;
-  align-items: flex-end;
-  gap: 1.5rem;
-  padding-bottom: 1rem;
-}
+@media only screen and (max-width: 700px) {
+  .hero-split {
+    flex-direction: column;
+    text-align: center;
+  }
 
-.photo-section .avatar {
-  margin: 0;
-}
-
-.photo-section .avatar img {
-  border-radius: 0.9rem;
-  max-width: 220px;
-  border: 1px solid var(--border);
-}
-
-.photo-caption {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--fg-subtle);
-  line-height: 1.6;
-  font-style: italic;
-}
-
-.photo-caption p {
-  margin: 0 0 0.6rem 0;
+  .hero-photo {
+    width: 12rem;
+  }
 }
 
 /* ==========================================================================
@@ -221,16 +254,54 @@ body {
 }
 
 .lane h3 {
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   margin: 0 0 0.5rem 0;
   color: var(--fg);
 }
 
 .lane p {
-  font-size: 0.92rem;
+  font-size: 1.05rem;
   color: var(--fg-muted);
   margin: 0;
   line-height: 1.55;
+}
+
+/* ==========================================================================
+   Books ("she writes too")
+   ========================================================================== */
+.books {
+  padding-bottom: 2rem;
+}
+
+.books-card {
+  border-top: 2px solid var(--border-strong);
+  padding-top: 1.5rem;
+  max-width: 40rem;
+}
+
+.books-card h3 {
+  font-size: 1.2rem;
+  margin: 0 0 0.6rem 0;
+  color: var(--fg);
+}
+
+.books-blurb {
+  font-size: 1.05rem;
+  color: var(--fg-muted);
+  line-height: 1.55;
+  margin: 0 0 1.2rem 0;
+}
+
+.books-titles {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--fg-muted);
+  margin: 0 0 1.5rem 0;
+  padding-left: 1.2rem;
+}
+
+.books-titles li {
+  margin-bottom: 0.3rem;
 }
 
 /* ==========================================================================
@@ -267,7 +338,7 @@ body {
 }
 
 .footer-tagline {
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   color: var(--fg-muted);
   max-width: 34rem;
   margin: 0 0 1.5rem 0;
@@ -276,12 +347,12 @@ body {
 .footer-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.2rem;
+  gap: 1.3rem;
   list-style: none;
   padding: 0;
   margin: 0 0 1.5rem 0;
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.95rem;
 }
 
 .footer-nav a {
@@ -295,7 +366,7 @@ body {
 
 .footer-copy {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   color: var(--fg-subtle);
   margin: 0;
 }
@@ -306,11 +377,4 @@ body {
 .posts-list .post-item {
   border-bottom: 1px dashed var(--border-strong);
   padding: 1rem 0;
-}
-
-@media only screen and (max-width: 640px) {
-  .photo-section {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }

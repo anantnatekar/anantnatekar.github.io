@@ -50,9 +50,13 @@ defaultContentLanguage = "en"
     [[params.lanes]]
         title = "Side Projects"
         description = "Shipping small apps and experiments to learn new tools by doing, not just reading."
-    [[params.lanes]]
-        title = "Writing"
-        description = "Notes on what breaks, what works, and what I'd do differently next time."
+
+    # Optional "books" card. Remove this whole block to hide the section.
+    [params.books]
+        title = "Krutika Natekar, author"
+        blurb = "My daughter Krutika has been publishing books since she was 10 — proceeds go to the Wisconsin Humane Society."
+        url = "https://www.amazon.com/stores/Krutika-Natekar/author/B08FBJ7FV8"
+        cta = "See her books on Amazon"
 
 # Nav links — also reused as the homepage CTA buttons and footer nav.
 # Set primary = true on one entry to make it the filled "primary" button.

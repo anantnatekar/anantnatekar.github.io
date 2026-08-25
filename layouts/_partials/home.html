@@ -1,47 +1,48 @@
-<section class="container hero">
-  <p class="eyebrow">// hello</p>
-
-  <h1 class="hero-name">{{ .Site.Params.author }}<span class="accent">.</span></h1>
-
-  {{ with .Site.Params.tagline }}
-  <p class="hero-tagline">{{ . | markdownify }}</p>
-  {{ end }}
-
-  {{ if .Site.Menus.main }}
-  <div class="hero-cta">
-    {{ range sort .Site.Menus.main "Weight" }}
-    <a class="cta-btn{{ if .Params.primary }} cta-primary{{ end }}"
-       href="{{ index (apply (slice .URL) (.Params.urlFunc | default "relLangURL") ".") 0 }}"
-       {{ if .Params.external }}target="_blank" rel="noopener"{{ end }}>
-      {{ .Name }}
-    </a>
-    {{ end }}
-  </div>
-  {{ end }}
-
-  {{ if .Site.Params.stats }}
-  <div class="hero-stats">
-    {{ range .Site.Params.stats }}
-    <div class="stat">
-      <span class="stat-value">{{ .value }}</span>
-      <span class="stat-label">{{ .label }}</span>
+<section class="container hero hero-split">
+  <div class="hero-photo">
+    {{ partialCached "home/avatar.html" . }}
+    {{ if or .Site.Params.location .Site.Params.coordinates }}
+    <div class="photo-caption">
+      <p>{{ .Site.Params.author }}<br>{{ now.Format "2006" }}</p>
+      {{ with .Site.Params.location }}<p>{{ . }}</p>{{ end }}
+      {{ with .Site.Params.coordinates }}<p>{{ . }}</p>{{ end }}
     </div>
     {{ end }}
   </div>
-  {{ end }}
-</section>
 
-{{ if and (isset .Site.Params "avatarurl") (not (isset .Site.Params "gravatar")) }}
-<p class="eyebrow container">// the person behind the code</p>
-<section class="container photo-section">
-  {{ partialCached "home/avatar.html" . }}
-  <div class="photo-caption">
-    <p>{{ .Site.Params.author }}<br>{{ now.Format "2006" }}</p>
-    {{ with .Site.Params.location }}<p>{{ . }}</p>{{ end }}
-    {{ with .Site.Params.coordinates }}<p>{{ . }}</p>{{ end }}
+  <div class="hero-content">
+    <p class="eyebrow">// hello</p>
+
+    <h1 class="hero-name">{{ .Site.Params.author }}<span class="accent">.</span></h1>
+
+    {{ with .Site.Params.tagline }}
+    <p class="hero-tagline">{{ . | markdownify }}</p>
+    {{ end }}
+
+    {{ if .Site.Menus.main }}
+    <div class="hero-cta">
+      {{ range sort .Site.Menus.main "Weight" }}
+      <a class="cta-btn{{ if .Params.primary }} cta-primary{{ end }}"
+         href="{{ index (apply (slice .URL) (.Params.urlFunc | default "relLangURL") ".") 0 }}"
+         {{ if .Params.external }}target="_blank" rel="noopener"{{ end }}>
+        {{ .Name }}
+      </a>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{ if .Site.Params.stats }}
+    <div class="hero-stats">
+      {{ range .Site.Params.stats }}
+      <div class="stat">
+        <span class="stat-value">{{ .value }}</span>
+        <span class="stat-label">{{ .label }}</span>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
   </div>
 </section>
-{{ end }}
 
 {{ if .Site.Params.lanes }}
 <p class="eyebrow container">// what i work on</p>
@@ -52,6 +53,26 @@
     <p>{{ .description }}</p>
   </div>
   {{ end }}
+</section>
+{{ end }}
+
+{{ with .Site.Params.books }}
+<p class="eyebrow container">// she writes too</p>
+<section class="container books">
+  <div class="books-card">
+    {{ with .title }}<h3>{{ . }}</h3>{{ end }}
+    {{ with .blurb }}<p class="books-blurb">{{ . | markdownify }}</p>{{ end }}
+    {{ if .titles }}
+    <ul class="books-titles">
+      {{ range .titles }}<li>{{ . }}</li>{{ end }}
+    </ul>
+    {{ end }}
+    {{ with .url }}
+    <a class="cta-btn cta-primary" href="{{ . }}" target="_blank" rel="noopener">
+      {{ $.Site.Params.books.cta | default "See her books on Amazon" }}
+    </a>
+    {{ end }}
+  </div>
 </section>
 {{ end }}
 

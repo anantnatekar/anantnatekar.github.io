@@ -1,0 +1,28 @@
+<footer class="footer">
+  <section class="container footer-inner">
+    {{ with .Site.Params.footerTagline }}
+    <p class="footer-tagline">{{ . | markdownify }}</p>
+    {{ end }}
+
+    {{ if .Site.Menus.main }}
+    <ul class="footer-nav">
+      {{ range sort .Site.Menus.main "Weight" }}
+      <li>
+        <a href="{{ index (apply (slice .URL) (.Params.urlFunc | default "relLangURL") ".") 0 }}"
+           {{ if .Params.external }}target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a>
+      </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+
+    <p class="footer-copy">
+      ©
+      {{ if (and .Site.Params.since (lt .Site.Params.since now.Year)) }}
+        {{ .Site.Params.since }}&ndash;
+      {{ end }}
+      {{ now.Year }}
+      {{ with .Site.Params.author }}{{ . }}{{ end }}
+      {{ range .Site.Params.footerLines }}&middot; {{ . }} {{ end }}
+    </p>
+  </section>
+</footer>

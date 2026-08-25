@@ -1,0 +1,59 @@
+<section class="container hero">
+  <p class="eyebrow">// hello</p>
+
+  <h1 class="hero-name">{{ .Site.Params.author }}<span class="accent">.</span></h1>
+
+  {{ with .Site.Params.tagline }}
+  <p class="hero-tagline">{{ . | markdownify }}</p>
+  {{ end }}
+
+  {{ if .Site.Menus.main }}
+  <div class="hero-cta">
+    {{ range sort .Site.Menus.main "Weight" }}
+    <a class="cta-btn{{ if .Params.primary }} cta-primary{{ end }}"
+       href="{{ index (apply (slice .URL) (.Params.urlFunc | default "relLangURL") ".") 0 }}"
+       {{ if .Params.external }}target="_blank" rel="noopener"{{ end }}>
+      {{ .Name }}
+    </a>
+    {{ end }}
+  </div>
+  {{ end }}
+
+  {{ if .Site.Params.stats }}
+  <div class="hero-stats">
+    {{ range .Site.Params.stats }}
+    <div class="stat">
+      <span class="stat-value">{{ .value }}</span>
+      <span class="stat-label">{{ .label }}</span>
+    </div>
+    {{ end }}
+  </div>
+  {{ end }}
+</section>
+
+{{ if and (isset .Site.Params "avatarurl") (not (isset .Site.Params "gravatar")) }}
+<p class="eyebrow container">// the person behind the code</p>
+<section class="container photo-section">
+  {{ partialCached "home/avatar.html" . }}
+  <div class="photo-caption">
+    <p>{{ .Site.Params.author }}<br>{{ now.Format "2006" }}</p>
+    {{ with .Site.Params.location }}<p>{{ . }}</p>{{ end }}
+    {{ with .Site.Params.coordinates }}<p>{{ . }}</p>{{ end }}
+  </div>
+</section>
+{{ end }}
+
+{{ if .Site.Params.lanes }}
+<p class="eyebrow container">// what i work on</p>
+<section class="container lanes">
+  {{ range .Site.Params.lanes }}
+  <div class="lane">
+    <h3>{{ .title }}</h3>
+    <p>{{ .description }}</p>
+  </div>
+  {{ end }}
+</section>
+{{ end }}
+
+{{ partialCached "home/extensions.html" . }}
+{{ partialCached "home/sections.html" . }}

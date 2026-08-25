@@ -8,30 +8,71 @@ defaultContentLanguage = "en"
     author = "Anant Natekar"
     description = "Engineering leadership, platform strategy, and software design."
     info = "Software Engineer & Builder"
-    
+
     # Force the theme into an automatic clean light/dark mode
     colorScheme = "auto"
     customCSS = ["css/custom.css"]
     hideAvatar = false
     avatarurl = "images/avatar.jpg"
+
+    # Hero copy — shown under the name on the homepage
+    tagline = "I tinker with and build clean, reliable software. Focused on end-to-end product engineering, from backend systems to the interfaces people actually touch."
+
+    # Optional caption under the homepage photo. Remove either line to hide it.
+    location = "Franklin, WI"
+    #coordinates = "00.0000° N, 00.0000° W"
+
+    footerTagline = "Software engineer & builder — sharing what I learn while shipping real projects."
     footerLines = [
         "Hand-written from my terminal.",
         "Built with Hugo. Hosted on GitHub Pages."
     ]
 
-# Setup the precise
+    # --- Everything below this line must stay last: TOML attaches any
+    # bare "key = value" lines to whichever [[array.of.tables]] was opened
+    # most recently, so scalar params always have to come before these. ---
+
+    # Optional stats row under the hero CTAs. Remove this whole block to hide it.
+    [[params.stats]]
+        value = "5+"
+        label = "years building"
+    [[params.stats]]
+        value = "10+"
+        label = "projects shipped"
+    [[params.stats]]
+        value = "∞"
+        label = "curiosity"
+
+    # Optional "what I work on" cards. Remove this whole block to hide the section.
+    [[params.lanes]]
+        title = "Software Engineering"
+        description = "Building reliable, well-tested systems end to end — from data model to UI."
+    [[params.lanes]]
+        title = "Side Projects"
+        description = "Shipping small apps and experiments to learn new tools by doing, not just reading."
+    [[params.lanes]]
+        title = "Writing"
+        description = "Notes on what breaks, what works, and what I'd do differently next time."
+
+# Nav links — also reused as the homepage CTA buttons and footer nav.
+# Set primary = true on one entry to make it the filled "primary" button.
+# Set external = true to open it in a new tab.
 [[menu.main]]
     name = "LinkedIn"
-    icon = "fa-brands fa-linkedin"
-    weight = 1
+    weight = 3
     url = "https://www.linkedin.com/in/anantnatekar/"
+    [menu.main.params]
+        external = true
 
 [[menu.main]]
     name = "Apps"
-    weight = 2
-    url = "portfolio-production-a9a0.up.railway.app"
+    weight = 1
+    url = "https://portfolio-production-a9a0.up.railway.app/"
+    [menu.main.params]
+        primary = true
+        external = true
 
 [[menu.main]]
     name = "About"
-    weight = 3
+    weight = 2
     url = "about/"

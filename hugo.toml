@@ -6,7 +6,6 @@ defaultContentLanguage = "en"
 
 [params]
     author = "Anant Natekar"
-    description = "Technology, AI, product, leadership, and things worth building."
     info = "Technologist, builder, and leader"
 
     colorScheme = "auto"
@@ -16,33 +15,11 @@ defaultContentLanguage = "en"
 
     tagline = "I build technology, products, and teams — and I'm curious about what changes when AI enters the equation."
 
-    location = "Franklin, WI"
-
     footerTagline = "Thinking about technology, AI, leadership, and the things worth building."
     footerLines = [
         "Hand-written from my terminal.",
         "Built with Hugo. Hosted on GitHub Pages."
     ]
-
-    [[params.stats]]
-        value = "technology"
-        label = "business + product"
-    [[params.stats]]
-        value = "AI"
-        label = "enterprise + emerging tech"
-    [[params.stats]]
-        value = "build"
-        label = "think, ship, learn"
-
-    [[params.lanes]]
-        title = "Technology & AI"
-        description = "Exploring how technology and AI change products, platforms, organizations, and the way work gets done."
-    [[params.lanes]]
-        title = "Building & Leading"
-        description = "I like turning ambiguous problems into clear decisions, strong teams, and things people can actually use."
-    [[params.lanes]]
-        title = "Still Tinkering"
-        description = "I still build things myself — small apps, experiments, and prototypes that help me understand a problem from the inside."
 
     [params.thesis]
         title = "The thesis"
@@ -52,9 +29,6 @@ defaultContentLanguage = "en"
         title = "The evidence"
         items = [
             "Things I've built",
-            "Problems I've helped solve",
-            "Teams and leaders I've helped grow",
-            "Ideas I've written about",
             "Conversations and talks about AI and technology"
         ]
 

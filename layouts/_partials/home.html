@@ -11,7 +11,6 @@
   </div>
 
   <div class="hero-content">
-    <p class="eyebrow">// hello</p>
     <h1 class="hero-name">{{ .Site.Params.author }}<span class="accent">.</span></h1>
     {{ with .Site.Params.tagline }}<p class="hero-tagline">{{ . | markdownify }}</p>{{ end }}
 
@@ -36,7 +35,6 @@
 </section>
 
 {{ with .Site.Params.thesis }}
-<p class="eyebrow container">// the thesis</p>
 <section class="container thesis">
   <div class="thesis-card">
     <h2>{{ .title }}</h2>
@@ -46,32 +44,37 @@
 {{ end }}
 
 {{ if .Site.Params.lanes }}
-<p class="eyebrow container">// what i'm thinking about</p>
-<section class="container lanes" id="thinking">
-  {{ range .Site.Params.lanes }}
-  <div class="lane"><h3>{{ .title }}</h3><p>{{ .description }}</p></div>
-  {{ end }}
+<section class="container section-block" id="thinking">
+  <h2 class="section-title">What I'm thinking about</h2>
+  <div class="lanes">
+    {{ range .Site.Params.lanes }}
+    <div class="lane"><h3>{{ .title }}</h3><p>{{ .description }}</p></div>
+    {{ end }}
+  </div>
 </section>
 {{ end }}
 
 {{ with .Site.Params.evidence }}
-<p class="eyebrow container">// the evidence</p>
-<section class="container evidence">
-  <div class="evidence-intro"><h2>{{ .title }}</h2><p>Not a résumé. Just a few signals of what I care about, what I've learned, and what I've actually done.</p></div>
-  <div class="evidence-list">
-    {{ range .items }}<div class="evidence-item"><span>→</span><p>{{ . }}</p></div>{{ end }}
+<section class="container section-block evidence-section">
+  <div class="evidence">
+    <div class="evidence-intro"><h2 class="section-title">{{ .title }}</h2><p>Not a résumé. Just a few signals of what I care about, what I've learned, and what I've actually done.</p></div>
+    <div class="evidence-list">
+      {{ range .items }}<div class="evidence-item"><span>→</span><p>{{ . }}</p></div>{{ end }}
+    </div>
   </div>
 </section>
 {{ end }}
 
 {{ with .Site.Params.books }}
-<p class="eyebrow container">// she writes too</p>
-<section class="container books">
-  <div class="books-card">
-    {{ with .title }}<h3>{{ . }}</h3>{{ end }}
-    {{ with .blurb }}<p class="books-blurb">{{ . | markdownify }}</p>{{ end }}
-    {{ if .titles }}<ul class="books-titles">{{ range .titles }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
-    {{ with .url }}<a class="cta-btn cta-primary" href="{{ . }}" target="_blank" rel="noopener">{{ $.Site.Params.books.cta | default "See her books on Amazon" }}</a>{{ end }}
+<section class="container section-block">
+  <h2 class="section-title">Outside of work</h2>
+  <div class="books">
+    <div class="books-card">
+      {{ with .title }}<h3>{{ . }}</h3>{{ end }}
+      {{ with .blurb }}<p class="books-blurb">{{ . | markdownify }}</p>{{ end }}
+      {{ if .titles }}<ul class="books-titles">{{ range .titles }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+      {{ with .url }}<a class="cta-btn cta-primary" href="{{ . }}" target="_blank" rel="noopener">{{ $.Site.Params.books.cta | default "See her books on Amazon" }}</a>{{ end }}
+    </div>
   </div>
 </section>
 {{ end }}

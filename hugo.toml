@@ -6,71 +6,72 @@ defaultContentLanguage = "en"
 
 [params]
     author = "Anant Natekar"
-    description = "Engineering leadership, platform strategy, and software design."
-    info = "Software Engineer & Builder"
+    description = "Technology, AI, product, leadership, and things worth building."
+    info = "Technologist, builder, and leader"
 
-    # Force the theme into an automatic clean light/dark mode
     colorScheme = "auto"
     customCSS = ["css/custom.css"]
     hideAvatar = false
     avatarurl = "images/avatar.jpg"
 
-    # Hero copy — shown under the name on the homepage
-    tagline = "I tinker with and build clean, reliable software. Focused on end-to-end product engineering, from backend systems to the interfaces people actually touch."
+    tagline = "I build technology, products, and teams — and I'm curious about what changes when AI enters the equation."
 
-    # Optional caption under the homepage photo. Remove either line to hide it.
     location = "Franklin, WI"
-    #coordinates = "00.0000° N, 00.0000° W"
 
-    footerTagline = "Software engineer & builder — sharing what I learn while shipping real projects."
+    footerTagline = "Thinking about technology, AI, leadership, and the things worth building."
     footerLines = [
         "Hand-written from my terminal.",
         "Built with Hugo. Hosted on GitHub Pages."
     ]
 
-    # --- Everything below this line must stay last: TOML attaches any
-    # bare "key = value" lines to whichever [[array.of.tables]] was opened
-    # most recently, so scalar params always have to come before these. ---
+    [[params.stats]]
+        value = "technology"
+        label = "business + product"
+    [[params.stats]]
+        value = "AI"
+        label = "enterprise + emerging tech"
+    [[params.stats]]
+        value = "build"
+        label = "think, ship, learn"
 
-    # Optional stats row under the hero CTAs. Remove this whole block to hide it.
-    [[params.stats]]
-        value = "5+"
-        label = "years building"
-    [[params.stats]]
-        value = "10+"
-        label = "projects shipped"
-    [[params.stats]]
-        value = "∞"
-        label = "curiosity"
-
-    # Optional "what I work on" cards. Remove this whole block to hide the section.
     [[params.lanes]]
-        title = "Software Engineering"
-        description = "Building reliable, well-tested systems end to end — from data model to UI."
+        title = "Technology & AI"
+        description = "Exploring how technology and AI change products, platforms, organizations, and the way work gets done."
     [[params.lanes]]
-        title = "Side Projects"
-        description = "Shipping small apps and experiments to learn new tools by doing, not just reading."
+        title = "Building & Leading"
+        description = "I like turning ambiguous problems into clear decisions, strong teams, and things people can actually use."
+    [[params.lanes]]
+        title = "Still Tinkering"
+        description = "I still build things myself — small apps, experiments, and prototypes that help me understand a problem from the inside."
 
-    # Optional "books" card. Remove this whole block to hide the section.
+    [params.thesis]
+        title = "The thesis"
+        body = "Technology is rarely the hard part. The hard part is figuring out what to build, why it matters, and how to get an organization moving in the same direction. AI makes that challenge more interesting — not less."
+
+    [params.evidence]
+        title = "The evidence"
+        items = [
+            "Things I've built",
+            "Problems I've helped solve",
+            "Teams and leaders I've helped grow",
+            "Ideas I've written about",
+            "Conversations and talks about AI and technology"
+        ]
+
     [params.books]
         title = "Krutika Natekar, author"
         blurb = "My daughter Krutika has been publishing books since she was 10 — proceeds go to the Wisconsin Humane Society."
         url = "https://www.amazon.com/stores/Krutika-Natekar/author/B08FBJ7FV8"
         cta = "See her books on Amazon"
 
-# Nav links — also reused as the homepage CTA buttons and footer nav.
-# Set primary = true on one entry to make it the filled "primary" button.
-# Set external = true to open it in a new tab.
 [[menu.main]]
-    name = "LinkedIn"
-    weight = 3
-    url = "https://www.linkedin.com/in/anantnatekar/"
-    [menu.main.params]
-        external = true
+    name = "Writing"
+    weight = 1
+    url = "#thinking"
 
 [[menu.main]]
     name = "Apps"
-    weight = 1
+    weight = 2
     url = "https://portfolio-production-a9a0.up.railway.app/"
     [menu.main.params]
         primary = true
@@ -78,5 +79,12 @@ defaultContentLanguage = "en"
 
 [[menu.main]]
     name = "About"
-    weight = 2
+    weight = 3
     url = "about/"
+
+[[menu.main]]
+    name = "LinkedIn"
+    weight = 4
+    url = "https://www.linkedin.com/in/anantnatekar/"
+    [menu.main.params]
+        external = true

@@ -43,17 +43,6 @@
 </section>
 {{ end }}
 
-{{ if .Site.Params.lanes }}
-<section class="container section-block" id="thinking">
-  <h2 class="section-title">What I'm thinking about</h2>
-  <div class="lanes">
-    {{ range .Site.Params.lanes }}
-    <div class="lane"><h3>{{ .title }}</h3><p>{{ .description }}</p></div>
-    {{ end }}
-  </div>
-</section>
-{{ end }}
-
 {{ with .Site.Params.evidence }}
 <section class="container section-block evidence-section">
   <div class="evidence">

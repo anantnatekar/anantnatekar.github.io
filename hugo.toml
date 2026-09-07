@@ -39,26 +39,16 @@ defaultContentLanguage = "en"
         cta = "See her books on Amazon"
 
 [[menu.main]]
-    name = "Writing"
-    weight = 1
-    url = "#thinking"
-
-[[menu.main]]
     name = "Apps"
-    weight = 2
+    weight = 1
     url = "https://portfolio-production-a9a0.up.railway.app/"
     [menu.main.params]
         primary = true
         external = true
 
 [[menu.main]]
-    name = "About"
-    weight = 3
-    url = "about/"
-
-[[menu.main]]
     name = "LinkedIn"
-    weight = 4
+    weight = 2
     url = "https://www.linkedin.com/in/anantnatekar/"
     [menu.main.params]
         external = true

@@ -10,27 +10,36 @@
 
 /* One type system: Inter for content, JetBrains Mono only for navigation/meta. */
 html { font-size: 16px; }
-body { font-family:var(--font-sans)!important; font-size:18px!important; letter-spacing:-.015em; line-height:1.65; background:var(--bg)!important; color:var(--fg)!important; }
+body { font-family:var(--font-sans)!important; font-size:17px!important; letter-spacing:-.015em; line-height:1.55; background:var(--bg)!important; color:var(--fg)!important; }
 h1,h2,h3,h4,h5,h6,p,a,li { font-family:var(--font-sans); }
 .navigation-title,.navigation-list .navigation-item a,.photo-caption,.stat,.cta-btn,.footer-nav,.footer-copy { font-family:var(--font-mono)!important; }
 
-.navigation{border-bottom:1px solid var(--border)}
-.navigation-title{font-weight:600!important;font-size:1rem;letter-spacing:-.01em}.navigation-list .navigation-item a{font-size:.9rem;color:var(--fg-muted)!important;text-decoration:none!important}.navigation-list .navigation-item a:hover{color:var(--fg)!important}
+/* Theme's .content is display:flex with no flex-direction (defaults to row),
+   which stacks our homepage sections side-by-side instead of vertically.
+   Fix the axis, keep flex:1 so it still pushes the footer to the bottom. */
+.content{flex-direction:column;flex:none!important;margin-top:.3rem!important;margin-bottom:.3rem!important}
 
-.hero-split{display:flex;align-items:center;gap:5rem;padding-top:3rem;padding-bottom:3rem;max-width:1100px}
-.hero-photo{flex:0 0 28rem;width:21rem;text-align:center}.hero-photo .avatar{margin:0}.hero-photo .avatar img{display:block;width:100%;height:auto;border-radius:1.25rem;border:1px solid var(--border)}
-.photo-caption{font-size:.78rem;color:var(--fg-subtle);line-height:1.55;font-style:normal;margin-top:.9rem}.photo-caption p{margin:0 0 .45rem}
-.hero-content{flex:1;text-align:left}.hero-name{font-weight:800;font-size:clamp(3.4rem,6vw,5rem);line-height:1.02;letter-spacing:-.045em;margin:0 0 1.35rem;color:var(--fg)}.hero-name .accent{color:var(--fg-subtle)}
-.hero-tagline{font-size:1.35rem;line-height:1.55;color:var(--fg-muted);max-width:42rem;margin:0 0 2rem}.hero-cta{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:.7rem;margin-bottom:2.5rem}.cta-btn{font-size:.82rem;font-weight:500;padding:.62rem 1.1rem;border:1px solid var(--border-strong);border-radius:999px;color:var(--fg)!important;text-decoration:none!important;transition:all .2s}.cta-btn:hover{border-color:var(--fg);background:var(--fg);color:var(--bg)!important}.cta-primary{background:var(--fg);color:var(--bg)!important;border-color:var(--fg)}
-.hero-stats{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:2rem;padding-top:1.5rem;border-top:1px dashed var(--border)}.stat{display:flex;flex-direction:column;align-items:flex-start}.stat-value{font-size:1rem;font-weight:600;color:var(--fg)}.stat-label{font-size:.72rem;color:var(--fg-subtle);margin-top:.15rem}
+/* Sticky header — theme hardcodes height:6rem, override to a tighter bar and pin it */
+.navigation{height:3.4rem!important;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;background:var(--bg);display:flex;align-items:center}
+.navigation .container{width:100%}
+.navigation-title{font-weight:600!important;font-size:1rem;letter-spacing:-.01em}.navigation-list .navigation-item a{font-size:.88rem;color:var(--fg-muted)!important;text-decoration:none!important}.navigation-list .navigation-item a:hover{color:var(--fg)!important}
 
-.section-block{margin-top:5rem}.section-title{font-size:1.65rem;line-height:1.2;font-weight:700;letter-spacing:-.03em;margin:0 0 1.8rem;color:var(--fg)}
-.thesis{margin-top:2rem}.thesis-card{max-width:850px;border-left:3px solid var(--fg);padding:1rem 0 1rem 2rem}.thesis-card h2{font-size:.82rem;font-family:var(--font-mono);font-weight:500;letter-spacing:.02em;text-transform:uppercase;margin:0 0 .7rem;color:var(--fg-muted)}.thesis-card p{font-size:1.5rem;line-height:1.5;margin:0;color:var(--fg)}
+/* Push page content down by the nav's own height since it's now pinned out of flow-height terms visually, but sticky keeps it in flow — no extra offset needed since sticky doesn't remove it from document flow. */
+
+.hero-split{display:flex;align-items:center;gap:3rem;padding-top:.6rem;padding-bottom:.6rem;max-width:1100px}
+.hero-photo{flex:0 0 6.5rem;width:6.5rem;text-align:center}.hero-photo .avatar{margin:0}.hero-photo .avatar img{display:block;width:100%;height:auto;border-radius:1rem;border:1px solid var(--border)}
+.photo-caption{font-size:.7rem;color:var(--fg-subtle);line-height:1.4;font-style:normal;margin-top:.5rem}.photo-caption p{margin:0 0 .3rem}
+.hero-content{flex:1;text-align:left}.hero-name{font-weight:800;font-size:clamp(1.7rem,3.4vw,2.3rem);line-height:1.05;letter-spacing:-.04em;margin:0 0 .6rem;color:var(--fg)}.hero-name .accent{color:var(--fg-subtle)}
+.hero-tagline{font-size:.95rem;line-height:1.35;color:var(--fg-muted);max-width:36rem;margin:0 0 .6rem}.hero-cta{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:.5rem;margin-bottom:.6rem}.cta-btn{font-size:.78rem;font-weight:500;padding:.45rem .95rem;border:1px solid var(--border-strong);border-radius:999px;color:var(--fg)!important;text-decoration:none!important;transition:all .2s}.cta-btn:hover{border-color:var(--fg);background:var(--fg);color:var(--bg)!important}.cta-primary{background:var(--fg);color:var(--bg)!important;border-color:var(--fg)}
+.hero-stats{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:1.5rem;padding-top:.8rem;border-top:1px dashed var(--border)}.stat{display:flex;flex-direction:column;align-items:flex-start}.stat-value{font-size:.95rem;font-weight:600;color:var(--fg)}.stat-label{font-size:.68rem;color:var(--fg-subtle);margin-top:.1rem}
+
+.section-block{margin-top:.4rem}.section-title{font-size:1.05rem;line-height:1.15;font-weight:700;letter-spacing:-.02em;margin:0 0 .45rem;color:var(--fg)}
+.thesis{margin-top:.3rem}.thesis-card{max-width:850px;border-left:3px solid var(--fg);padding:.25rem 0 .25rem 1.25rem}.thesis-card h2{font-size:.68rem;font-family:var(--font-mono);font-weight:500;letter-spacing:.02em;text-transform:uppercase;margin:0 0 .25rem;color:var(--fg-muted)}.thesis-card p{font-size:.95rem;line-height:1.32;margin:0;color:var(--fg)}
 .lanes{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}.lane{border-top:2px solid var(--border-strong);padding-top:1rem}.lane h3{font-size:1.15rem;line-height:1.3;margin:0 0 .55rem;color:var(--fg)}.lane p{font-size:1rem;color:var(--fg-muted);margin:0;line-height:1.6}
-.evidence{display:grid;grid-template-columns:minmax(12rem,.7fr) minmax(20rem,1.3fr);gap:4rem}.evidence-intro p{font-size:1rem;color:var(--fg-muted);line-height:1.6}.evidence-list{border-top:1px solid var(--border)}.evidence-item{display:flex;gap:1rem;align-items:flex-start;border-bottom:1px dashed var(--border);padding:1rem 0}.evidence-item span{font-family:var(--font-mono);color:var(--fg-subtle)}.evidence-item p{margin:0;color:var(--fg-muted);font-size:1rem}
-.books-card{border-top:2px solid var(--border-strong);padding-top:1.5rem;max-width:650px}.books-card h3{font-size:1.15rem;margin:0 0 .6rem}.books-blurb{font-size:1rem;color:var(--fg-muted);line-height:1.6;margin:0 0 1.2rem}
+.evidence{display:grid;grid-template-columns:minmax(9rem,.6fr) minmax(16rem,1.4fr);gap:2rem}.evidence-intro p{font-size:.85rem;color:var(--fg-muted);line-height:1.4}.evidence-list{border-top:1px solid var(--border)}.evidence-item{display:flex;gap:.6rem;align-items:flex-start;border-bottom:1px dashed var(--border);padding:.3rem 0}.evidence-item span{font-family:var(--font-mono);color:var(--fg-subtle)}.evidence-item p{margin:0;color:var(--fg-muted);font-size:.85rem}
+.books-card{border-top:2px solid var(--border-strong);padding-top:.35rem;max-width:650px}.books-card h3{font-size:.95rem;margin:0 0 .25rem}.books-blurb{font-size:.82rem;color:var(--fg-muted);line-height:1.3;margin:0 0 .4rem}
 .about ul{display:flex;gap:1rem;list-style:none;padding:0;margin:0 0 2rem}.about ul li a{color:var(--fg-muted)!important}.about ul li a:hover{color:var(--fg)!important}
-.footer{border-top:1px solid var(--border);margin-top:5rem}.footer-inner{padding-top:2.5rem;padding-bottom:2.5rem}.footer-tagline{font-size:1rem;color:var(--fg-muted);max-width:34rem;margin:0 0 1.5rem}.footer-nav{display:flex;flex-wrap:wrap;gap:1.2rem;list-style:none;padding:0;margin:0 0 1.5rem;font-size:.8rem}.footer-nav a{color:var(--fg-muted)!important;text-decoration:none!important}.footer-nav a:hover{color:var(--fg)!important}.footer-copy{font-size:.75rem;color:var(--fg-subtle);margin:0}
+.footer{border-top:1px solid var(--border);margin-top:.4rem}.footer-inner{padding-top:.3rem;padding-bottom:.3rem}.footer-tagline{font-size:.78rem;color:var(--fg-muted);max-width:34rem;margin:0 0 .2rem}.footer-nav{display:flex;flex-wrap:wrap;gap:1rem;list-style:none;padding:0;margin:0 0 .2rem;font-size:.7rem}.footer-nav a{color:var(--fg-muted)!important;text-decoration:none!important}.footer-nav a:hover{color:var(--fg)!important}.footer-copy{font-size:.7rem;color:var(--fg-subtle);margin:0}
 
-@media(max-width:850px){.hero-split{gap:3rem}.hero-photo{flex-basis:18rem;width:18rem}.lanes{grid-template-columns:1fr 1fr}.evidence{grid-template-columns:1fr;gap:1.5rem}}
-@media(max-width:700px){body{font-size:17px!important}.hero-split{flex-direction:column;text-align:center;padding-top:2rem}.hero-photo{width:17rem}.hero-content{text-align:center}.hero-tagline{font-size:1.2rem}.hero-cta,.hero-stats{justify-content:center}.stat{align-items:center}.lanes{grid-template-columns:1fr}.thesis-card{padding-left:1rem}.thesis-card p{font-size:1.2rem}.section-block{margin-top:4rem}}
+@media(max-width:850px){.hero-split{gap:2rem}.hero-photo{flex-basis:6rem;width:6rem}.evidence{grid-template-columns:1fr;gap:1rem}}
+@media(max-width:700px){.hero-split{flex-direction:column;text-align:center;padding-top:1rem}.hero-photo{width:6.5rem;flex-basis:6.5rem;margin:0 auto}.hero-content{text-align:center}.hero-tagline{font-size:.9rem}.hero-cta,.hero-stats{justify-content:center}.stat{align-items:center}.thesis-card{padding-left:1rem}.thesis-card p{font-size:.9rem}}

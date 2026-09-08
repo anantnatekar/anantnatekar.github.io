@@ -1,72 +1,76 @@
-<section class="container hero hero-split">
-  <div class="hero-photo">
-    {{ partialCached "home/avatar.html" . }}
-    {{ if or .Site.Params.location .Site.Params.coordinates }}
-    <div class="photo-caption">
-      <p>{{ .Site.Params.author }}<br>{{ now.Format "2006" }}</p>
-      {{ with .Site.Params.location }}<p>{{ . }}</p>{{ end }}
-      {{ with .Site.Params.coordinates }}<p>{{ . }}</p>{{ end }}
-    </div>
-    {{ end }}
-  </div>
-
-  <div class="hero-content">
-    <h1 class="hero-name">{{ .Site.Params.author }}<span class="accent">.</span></h1>
-    {{ with .Site.Params.tagline }}<p class="hero-tagline">{{ . | markdownify }}</p>{{ end }}
-
-    {{ if .Site.Menus.main }}
-    <div class="hero-cta">
-      {{ range sort .Site.Menus.main "Weight" }}
-      <a class="cta-btn{{ if .Params.primary }} cta-primary{{ end }}"
-         href="{{ if hasPrefix .URL "#" }}{{ .URL }}{{ else }}{{ index (apply (slice .URL) (.Params.urlFunc | default "relLangURL") ".") 0 }}{{ end }}"
-         {{ if .Params.external }}target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a>
+<div class="split-container">
+  <div class="split-left">
+    <div class="hero-photo">
+      {{ partialCached "home/avatar.html" . }}
+      {{ if or .Site.Params.location .Site.Params.coordinates }}
+      <div class="photo-caption">
+        <p>{{ .Site.Params.author }}<br>{{ now.Format "2006" }}</p>
+        {{ with .Site.Params.location }}<p>{{ . }}</p>{{ end }}
+        {{ with .Site.Params.coordinates }}<p>{{ . }}</p>{{ end }}
+      </div>
       {{ end }}
     </div>
-    {{ end }}
 
-    {{ if .Site.Params.stats }}
-    <div class="hero-stats">
-      {{ range .Site.Params.stats }}
-      <div class="stat"><span class="stat-value">{{ .value }}</span><span class="stat-label">{{ .label }}</span></div>
+    <div class="hero-content">
+      <h1 class="hero-name">{{ .Site.Params.author }}<span class="accent">.</span></h1>
+      {{ with .Site.Params.tagline }}<p class="hero-tagline">{{ . | markdownify }}</p>{{ end }}
+
+      {{ if .Site.Menus.main }}
+      <div class="hero-cta">
+        {{ range sort .Site.Menus.main "Weight" }}
+        <a class="cta-btn{{ if .Params.primary }} cta-primary{{ end }}"
+           href="{{ if hasPrefix .URL "#" }}{{ .URL }}{{ else }}{{ index (apply (slice .URL) (.Params.urlFunc | default "relLangURL") ".") 0 }}{{ end }}"
+           {{ if .Params.external }}target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      {{ if .Site.Params.stats }}
+      <div class="hero-stats">
+        {{ range .Site.Params.stats }}
+        <div class="stat"><span class="stat-value">{{ .value }}</span><span class="stat-label">{{ .label }}</span></div>
+        {{ end }}
+      </div>
       {{ end }}
     </div>
+  </div>
+
+  <div class="split-right">
+    {{ with .Site.Params.thesis }}
+    <section class="thesis">
+      <div class="thesis-card">
+        <h2>{{ .title }}</h2>
+        <p>{{ .body }}</p>
+      </div>
+    </section>
+    {{ end }}
+
+    {{ with .Site.Params.evidence }}
+    <section class="section-block evidence-section">
+      <div class="evidence">
+        <div class="evidence-intro"><h2 class="section-title">{{ .title }}</h2><p>Not a résumé. Just a few signals of what I care about, what I've learned, and what I've actually done.</p></div>
+        <div class="evidence-list">
+          {{ range .items }}<div class="evidence-item"><span>→</span><p>{{ . }}</p></div>{{ end }}
+        </div>
+      </div>
+    </section>
+    {{ end }}
+
+    {{ with .Site.Params.books }}
+    <section class="section-block">
+      <h2 class="section-title">Outside of work</h2>
+      <div class="books">
+        <div class="books-card">
+          {{ with .title }}<h3>{{ . }}</h3>{{ end }}
+          {{ with .blurb }}<p class="books-blurb">{{ . | markdownify }}</p>{{ end }}
+          {{ if .titles }}<ul class="books-titles">{{ range .titles }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+          {{ with .url }}<a class="cta-btn cta-primary" href="{{ . }}" target="_blank" rel="noopener">{{ $.Site.Params.books.cta | default "See her books on Amazon" }}</a>{{ end }}
+        </div>
+      </div>
+    </section>
     {{ end }}
   </div>
-</section>
-
-{{ with .Site.Params.thesis }}
-<section class="container thesis">
-  <div class="thesis-card">
-    <h2>{{ .title }}</h2>
-    <p>{{ .body }}</p>
-  </div>
-</section>
-{{ end }}
-
-{{ with .Site.Params.evidence }}
-<section class="container section-block evidence-section">
-  <div class="evidence">
-    <div class="evidence-intro"><h2 class="section-title">{{ .title }}</h2><p>Not a résumé. Just a few signals of what I care about, what I've learned, and what I've actually done.</p></div>
-    <div class="evidence-list">
-      {{ range .items }}<div class="evidence-item"><span>→</span><p>{{ . }}</p></div>{{ end }}
-    </div>
-  </div>
-</section>
-{{ end }}
-
-{{ with .Site.Params.books }}
-<section class="container section-block">
-  <h2 class="section-title">Outside of work</h2>
-  <div class="books">
-    <div class="books-card">
-      {{ with .title }}<h3>{{ . }}</h3>{{ end }}
-      {{ with .blurb }}<p class="books-blurb">{{ . | markdownify }}</p>{{ end }}
-      {{ if .titles }}<ul class="books-titles">{{ range .titles }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
-      {{ with .url }}<a class="cta-btn cta-primary" href="{{ . }}" target="_blank" rel="noopener">{{ $.Site.Params.books.cta | default "See her books on Amazon" }}</a>{{ end }}
-    </div>
-  </div>
-</section>
-{{ end }}
+</div>
 
 {{ partialCached "home/extensions.html" . }}
 {{ partialCached "home/sections.html" . }}
